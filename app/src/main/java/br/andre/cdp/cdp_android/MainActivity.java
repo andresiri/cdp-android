@@ -14,10 +14,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        tv_hello_word.setText(R.string.xico);
-
-        setContentView(R.layout.activity_main);
+        tv_hello_word.setText(getString(R.string.xico));
     }
 }
