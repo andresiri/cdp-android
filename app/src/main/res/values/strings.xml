@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">cdp-android</string>
-    <string name="xico">xico</string>
     <string name="loginPassword">Password</string>
     <string name="loginUser">Email</string>
     <string name="loginSignin">Signin</string>
-    <string name="LoginForgotPass">Forgot Password?</string>
+    <string name="loginForgotPassword">Forgot Password?</string>
 </resources>
