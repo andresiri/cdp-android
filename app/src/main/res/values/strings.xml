@@ -4,4 +4,9 @@
     <string name="loginUser">Email</string>
     <string name="loginSignin">Signin</string>
     <string name="loginForgotPassword">Forgot Password?</string>
+
+
+    <string name="msg_login_validate_success">User and password are valid</string>
+    <string name="msg_login_empty">User and password required</string>
+    <string name="createPelada">Create Pelada</string>
 </resources>
