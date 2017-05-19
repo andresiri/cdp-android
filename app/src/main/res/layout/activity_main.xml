@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.andre.cdp.cdp_android.MainActivity">
+    tools:context="br.andre.cdp.cdp_android.activities.MainActivity">
 
     <Button
         android:id="@+id/btnMainCreatePelada"

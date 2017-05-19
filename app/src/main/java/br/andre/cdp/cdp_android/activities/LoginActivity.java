@@ -1,5 +1,6 @@
 package br.andre.cdp.cdp_android.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
@@ -80,8 +81,16 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     }
 
     @Override
+    public void goNextActivity() {
+        Intent it = new Intent(this, MainActivity.class);
+        startActivity(it);
+        finish();
+    }
+
+    @Override
     public void returnLoginValidateSuccess(String msg) {
         Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
+        goNextActivity();
     }
 
     @Override

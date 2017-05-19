@@ -10,6 +10,8 @@ public interface ILoginView  {
     void OnClickSign();
     void OnClickForgotPassword();
 
+    void goNextActivity();
+
     /*
     * RETURNS OF INTERACTOR
     */
