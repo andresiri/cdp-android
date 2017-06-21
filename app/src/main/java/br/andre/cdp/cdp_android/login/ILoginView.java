@@ -9,6 +9,7 @@ public interface ILoginView  {
     void init();
     void OnClickSign();
     void OnClickForgotPassword();
+    void OnClickLoginSignup();
 
     void goNextActivity();
 

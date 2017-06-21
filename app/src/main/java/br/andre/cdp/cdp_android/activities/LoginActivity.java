@@ -76,6 +76,15 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     }
 
     @Override
+    @OnClick(R.id.tvSignup)
+    public void OnClickLoginSignup() {
+
+        Intent it = new Intent(this, SignupActivity.class);
+        startActivity(it);
+
+    }
+
+    @Override
     public void OnClickForgotPassword() {
 
     }

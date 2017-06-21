@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".activities.SignupActivity" />
         <activity android:name=".activities.CreatePeladaAcitivity" />
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.LoginActivity">

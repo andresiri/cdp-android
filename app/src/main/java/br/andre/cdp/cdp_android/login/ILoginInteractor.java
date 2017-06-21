@@ -9,5 +9,6 @@ import android.content.Context;
 interface ILoginInteractor {
 
     void checkLoginIsValid(Context context, ILoginView view, String user, String pass);
+    void registerUser(Context context, ISignupView view, String user, String pass, String name);
 
 }

@@ -1,29 +1,27 @@
 package br.andre.cdp.cdp_android.login;
 
 import android.content.Context;
-import android.view.View;
 
 /**
  * Created by helio on 5/16/17.
  */
 
-public class LoginPresenter implements ILoginPresenter {
+public class SignupPresenter implements ISignupPresenter {
 
     private LoginInteractor _interactor;
-    ILoginView _view;
+    ISignupView _view;
     private Context _context;
 
-    public LoginPresenter(Context context, ILoginView view){
+    public SignupPresenter(Context context, ISignupView view){
         _interactor = new LoginInteractor();
         _view = view;
         _context = context;
     }
 
     @Override
-    public void trySign(String user, String pass) {
+    public void onSignup(String user, String pass, String name) {
 
-        _interactor.checkLoginIsValid(_context, _view, user, pass);
+        _interactor.registerUser(_context, _view, user, pass, name);
 
     }
-
 }

@@ -7,6 +7,11 @@
 
 
     <string name="msg_login_validate_success">User and password are valid</string>
-    <string name="msg_login_empty">User and password required</string>
+    <string name="msg_login_empty">User and password are required</string>
     <string name="createPelada">Create Pelada</string>
+    <string name="signup">Signup</string>
+    <string name="email">Email</string>
+    <string name="name">Name</string>
+    <string name="loginFirstName">First Name</string>
+    <string name="lastName">Last Name</string>
 </resources>
