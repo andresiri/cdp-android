@@ -1,6 +1,7 @@
 package br.andre.cdp.cdp_android.login;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -11,6 +12,7 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 
+import br.andre.cdp.cdp_android.R;
 import br.andre.cdp.cdp_android.domain.User;
 import br.andre.cdp.cdp_android.support.URLs;
 import cz.msebera.android.httpclient.Header;
@@ -30,20 +32,23 @@ public class LoginInteractor implements ILoginInteractor {
         params.put("email", user);
         params.put("password", pass);
 
-        client.post(context, URLs.loginPost(),
-            params, new AsyncHttpResponseHandler() {
-
-                public void onStart() {
-
-                    super.onStart();
-                }
+        client.post(context, URLs.LOGIN, params,
+            new AsyncHttpResponseHandler() {
+                public void onStart() { super.onStart(); }
 
                 @Override
                 public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
+
                     try {
 
                         JSONObject json = new JSONObject(new String(responseBody));
-                        view.returnLoginValidateSuccess(json.get("access_token").toString());
+                        String accessToken = json.get("access_token").toString();
+
+                        SharedPreferences.Editor editor = context.getSharedPreferences("user", Context.MODE_PRIVATE).edit();
+                        editor.putString(context.getString(R.string.sp_access_token), accessToken);
+                        editor.apply();
+
+                        view.returnLoginValidateSuccess(accessToken);
 
                         //view.returnLoginValidateSuccess(context.getString(R.string.msg_login_validate_success));
 
@@ -62,8 +67,8 @@ public class LoginInteractor implements ILoginInteractor {
                 public void onFinish() {
                     super.onFinish();
                 }
-            });
-
+            }
+        );
     }
 
     @Override
@@ -78,7 +83,7 @@ public class LoginInteractor implements ILoginInteractor {
             json.put("Lastname", "");
 
             StringEntity entity = new StringEntity(json.toString());
-            client.post(context, URLs.loginPost(), entity, "application/json", new AsyncHttpResponseHandler() {
+            client.post(context, URLs.LOGIN, entity, "application/json", new AsyncHttpResponseHandler() {
 
                 public void onStart() {
                     super.onStart();
@@ -114,49 +119,6 @@ public class LoginInteractor implements ILoginInteractor {
             e.printStackTrace();
         }
 
-        /*
-
-        RequestParams params = new RequestParams();
-        params.put("email", user);
-        params.put("password", pass);
-
-        client.post(context, URLs.loginPost(),
-            params, new AsyncHttpResponseHandler() {
-
-                public void onStart() {
-
-                    super.onStart();
-                }
-
-                @Override
-                public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
-                    try {
-
-                        JSONObject json = new JSONObject(new String(responseBody));
-                        view.returnSignupSuccess(json.get("access_token").toString());
-
-                        //view.returnLoginValidateSuccess(context.getString(R.string.msg_login_validate_success));
-
-                    } catch (JSONException e) {
-
-                        e.printStackTrace();
-                    }
-                }
-
-                @Override
-                public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
-
-                    view.returnSignupError(error.getMessage());
-                }
-
-                public void onFinish() {
-                    super.onFinish();
-                }
-            });
-
-        */
-
         view.returnSignupSuccess("Registration successfully complete");
-
     }
 }

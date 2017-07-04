@@ -1,17 +1,22 @@
 <resources>
     <string name="app_name">cdp-android</string>
+    <string name="sp_access_token">accessToken</string>
+
     <string name="loginPassword">Password</string>
     <string name="loginUser">Email</string>
     <string name="loginSignin">Signin</string>
     <string name="loginForgotPassword">Forgot Password?</string>
 
+    <string name="newuserEmail">Email</string>
+    <string name="newuserFirstName">First Name</string>
+    <string name="newuserLastName">Last Name</string>
+    <string name="newuserSignup">Signup</string>
+
+    <string name="newpeladaCreatePelada">Create Pelada</string>
 
     <string name="msg_login_validate_success">User and password are valid</string>
     <string name="msg_login_empty">User and password are required</string>
-    <string name="createPelada">Create Pelada</string>
-    <string name="signup">Signup</string>
-    <string name="email">Email</string>
-    <string name="name">Name</string>
-    <string name="loginFirstName">First Name</string>
-    <string name="lastName">Last Name</string>
+
+    <string name="btn_save">Save</string>
+
 </resources>

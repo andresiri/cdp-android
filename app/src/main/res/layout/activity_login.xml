@@ -12,7 +12,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif"
-        android:text="@string/signup"
+        android:text="@string/newuserSignup"
         android:textAllCaps="false"
         android:textColor="@android:color/darker_gray"
         android:textSize="18sp"

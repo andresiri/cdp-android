@@ -10,21 +10,16 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
 
-    /*@BindView(R.id.tv_hello_world) TextView tv_hello_word;*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        /*tv_hello_word.setText(getString(R.string.xico));*/
     }
 
     @OnClick(R.id.btnMainCreatePelada)
     public void OnClickCreatePelada() {
 
         startActivity(new Intent(this, CreatePeladaAcitivity.class));
-
     }
 }
