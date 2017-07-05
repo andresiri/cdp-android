@@ -1,5 +1,9 @@
 package br.andre.cdp.cdp_android.login;
 
+import org.json.JSONException;
+
+import java.io.UnsupportedEncodingException;
+
 /**
  * Created by helio on 5/18/17.
  */
@@ -7,7 +11,7 @@ package br.andre.cdp.cdp_android.login;
 public interface ISignupView {
 
     void init();
-    void OnClickSignup();
+    void OnClickSignup() throws UnsupportedEncodingException, JSONException;
 
     void goNextActivity();
 

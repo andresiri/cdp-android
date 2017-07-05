@@ -11,5 +11,7 @@ public class URLs {
 
     public static final String LOGIN = HOST + DOMAIN + "api/token";
 
+    public static final String USER_CREATE = HOST + DOMAIN + "api/user";
+
     public static final String PELADA_CREATE = HOST + DOMAIN + "api/pelada";
 }

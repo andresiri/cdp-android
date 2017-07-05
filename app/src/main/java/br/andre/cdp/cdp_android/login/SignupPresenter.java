@@ -2,6 +2,12 @@ package br.andre.cdp.cdp_android.login;
 
 import android.content.Context;
 
+import org.json.JSONException;
+
+import java.io.UnsupportedEncodingException;
+
+import br.andre.cdp.cdp_android.domain.model.NewUserModel;
+
 /**
  * Created by helio on 5/16/17.
  */
@@ -19,9 +25,8 @@ public class SignupPresenter implements ISignupPresenter {
     }
 
     @Override
-    public void onSignup(String user, String pass, String name) {
+    public void onSignup(NewUserModel newUser) throws UnsupportedEncodingException, JSONException {
 
-        _interactor.registerUser(_context, _view, user, pass, name);
-
+        _interactor.registerUser(_context, _view, newUser);
     }
 }

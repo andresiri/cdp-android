@@ -14,6 +14,7 @@ import java.io.UnsupportedEncodingException;
 
 import br.andre.cdp.cdp_android.R;
 import br.andre.cdp.cdp_android.domain.User;
+import br.andre.cdp.cdp_android.domain.model.NewUserModel;
 import br.andre.cdp.cdp_android.support.URLs;
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.entity.StringEntity;
@@ -72,53 +73,45 @@ public class LoginInteractor implements ILoginInteractor {
     }
 
     @Override
-    public void registerUser(Context context, final ISignupView view, String user, String pass, String name) {
+    public void registerUser(Context context, final ISignupView view, NewUserModel newUser) throws JSONException, UnsupportedEncodingException {
 
         AsyncHttpClient client = new AsyncHttpClient();
+
         JSONObject json = new JSONObject();
-        try {
-            json.put("Email", user);
-            json.put("Password", pass);
-            json.put("Firstname", name);
-            json.put("Lastname", "");
+        json.put("email", newUser.email);
+        json.put("password", newUser.password);
+        json.put("firstName", newUser.firstName);
+        json.put("lastName", newUser.lastName);
 
-            StringEntity entity = new StringEntity(json.toString());
-            client.post(context, URLs.LOGIN, entity, "application/json", new AsyncHttpResponseHandler() {
+        StringEntity entity = new StringEntity(json.toString());
 
-                public void onStart() {
-                    super.onStart();
+        client.post(context, URLs.USER_CREATE, entity, "application/json", new AsyncHttpResponseHandler() {
+
+            public void onStart() {
+                super.onStart();
+            }
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                JSONObject json = null;
+
+                try {
+                    json = new JSONObject(new String(responseBody));
+                    view.returnSignupSuccess(json.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
+            }
 
-                @Override
-                public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                    JSONObject json = null;
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
-                    try {
-                        json = new JSONObject(new String(responseBody));
-                        view.returnSignupSuccess(json.toString());
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
+                view.returnSignupError(error.getMessage());
+            }
 
-                @Override
-                public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
-                }
-
-                public void onFinish() {
-                    super.onFinish();
-                }
-            });
-
-            view.returnSignupSuccess(json.toString());
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-        view.returnSignupSuccess("Registration successfully complete");
+            public void onFinish() {
+                super.onFinish();
+            }
+        });
     }
 }

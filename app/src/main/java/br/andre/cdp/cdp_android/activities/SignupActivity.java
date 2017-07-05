@@ -6,8 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
+import java.io.UnsupportedEncodingException;
+
 import br.andre.cdp.cdp_android.BuildConfig;
 import br.andre.cdp.cdp_android.R;
+import br.andre.cdp.cdp_android.domain.model.NewUserModel;
 import br.andre.cdp.cdp_android.login.ISignupView;
 import br.andre.cdp.cdp_android.login.SignupPresenter;
 import butterknife.BindView;
@@ -23,11 +28,14 @@ public class SignupActivity extends AppCompatActivity implements ISignupView {
     @BindView(R.id.etSignupEmail)
     EditText _etSignupEmail;
 
-    @BindView(R.id.etSignupLastName)
+    @BindView(R.id.etSignupPassword)
     EditText _etSignupPass;
 
-    @BindView(R.id.etSignupName)
-    EditText _etSignupName;
+    @BindView(R.id.etSignupLastName)
+    EditText _etSignupLastName;
+
+    @BindView(R.id.etSignupFirstName)
+    EditText _etSignupFirstName;
 
     SignupPresenter signupPresenter;
 
@@ -47,17 +55,17 @@ public class SignupActivity extends AppCompatActivity implements ISignupView {
 
         if (BuildConfig.DEBUG){
             _etSignupEmail.setText("heliofeliciano@gmail.com");
-            _etSignupName.setText("Helio F S Junior");
+            _etSignupFirstName.setText("Helio F S Junior");
             _etSignupPass.setText("helio");
         }
 
     }
 
-    private Boolean checkDatasValid() {
+    private Boolean checkDataValid() {
 
         if (_etSignupPass.getText().toString().equals("")
                 || _etSignupEmail.getText().toString().equals("")
-                || _etSignupName.getText().toString().equals("")) {
+                || _etSignupFirstName.getText().toString().equals("")) {
 
             Toast.makeText(getBaseContext(), getString(R.string.msg_login_empty), Toast.LENGTH_SHORT).show();
 
@@ -71,10 +79,20 @@ public class SignupActivity extends AppCompatActivity implements ISignupView {
     @Override
     public void OnClickSignup() {
 
-        if (checkDatasValid()) {
-            signupPresenter.onSignup(_etSignupEmail.getText().toString(), _etSignupPass.getText().toString(), _etSignupName.getText().toString());
-        }
+        if (checkDataValid()) {
 
+            NewUserModel newUser = new NewUserModel();
+            newUser.email = _etSignupEmail.getText().toString();
+            newUser.password = _etSignupPass.getText().toString();
+            newUser.firstName = _etSignupFirstName.getText().toString();
+            newUser.lastName = _etSignupLastName.getText().toString();
+
+            try {
+                signupPresenter.onSignup(newUser);
+            } catch (UnsupportedEncodingException | JSONException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -86,7 +104,6 @@ public class SignupActivity extends AppCompatActivity implements ISignupView {
     public void returnSignupSuccess(String msg) {
 
         Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
-
     }
 
     @Override
