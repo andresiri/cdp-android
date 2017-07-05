@@ -109,5 +109,6 @@ public class SignupActivity extends AppCompatActivity implements ISignupView {
     @Override
     public void returnSignupError(String msg) {
 
+        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_SHORT).show();
     }
 }

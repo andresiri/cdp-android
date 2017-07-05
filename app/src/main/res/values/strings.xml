@@ -19,4 +19,6 @@
 
     <string name="btn_save">Save</string>
 
+    <!-- Exceptins -->
+    <string name="EMAIL_ALREADY_IN_USE">Email already in use</string>
 </resources>

@@ -14,6 +14,7 @@ import java.io.UnsupportedEncodingException;
 
 import br.andre.cdp.cdp_android.R;
 import br.andre.cdp.cdp_android.domain.model.NewUserModel;
+import br.andre.cdp.cdp_android.support.Support;
 import br.andre.cdp.cdp_android.support.URLs;
 import cz.msebera.android.httpclient.Header;
 import cz.msebera.android.httpclient.entity.StringEntity;
@@ -72,7 +73,7 @@ public class LoginInteractor implements ILoginInteractor {
     }
 
     @Override
-    public void registerUser(Context context, final ISignupView view, NewUserModel newUser) throws JSONException, UnsupportedEncodingException {
+    public void registerUser(final Context context, final ISignupView view, NewUserModel newUser) throws JSONException, UnsupportedEncodingException {
 
         AsyncHttpClient client = new AsyncHttpClient();
 
@@ -96,7 +97,17 @@ public class LoginInteractor implements ILoginInteractor {
 
                 try {
                     json = new JSONObject(new String(responseBody));
-                    view.returnSignupSuccess(json.toString());
+                    if (json.get("type") != null) {
+
+                        if (json.get("type").equals("CUSTOM_ERROR")) {
+
+                            view.returnSignupError(Support.getStringResourceByName(context, json.get("message").toString()));
+
+                        }
+
+                    }
+
+                    //view.returnSignupSuccess(json.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
