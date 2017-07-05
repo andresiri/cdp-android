@@ -1,7 +1,6 @@
-package br.andre.cdp.cdp_android.login;
+package br.andre.cdp.cdp_android.mvp.login;
 
 import android.content.Context;
-import android.view.View;
 
 /**
  * Created by helio on 5/16/17.

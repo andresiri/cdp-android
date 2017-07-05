@@ -1,4 +1,4 @@
-package br.andre.cdp.cdp_android.login;
+package br.andre.cdp.cdp_android.mvp.login;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,7 +13,6 @@ import org.json.JSONObject;
 import java.io.UnsupportedEncodingException;
 
 import br.andre.cdp.cdp_android.R;
-import br.andre.cdp.cdp_android.domain.User;
 import br.andre.cdp.cdp_android.domain.model.NewUserModel;
 import br.andre.cdp.cdp_android.support.URLs;
 import cz.msebera.android.httpclient.Header;

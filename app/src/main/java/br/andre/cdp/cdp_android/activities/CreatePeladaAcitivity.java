@@ -11,7 +11,6 @@ import java.io.UnsupportedEncodingException;
 
 import br.andre.cdp.cdp_android.R;
 import br.andre.cdp.cdp_android.domain.Pelada;
-import br.andre.cdp.cdp_android.login.LoginPresenter;
 import br.andre.cdp.cdp_android.mvp.pelada.createpelada.CreatePeladaPresenter;
 import br.andre.cdp.cdp_android.mvp.pelada.createpelada.ICreatePeladaView;
 import butterknife.BindView;

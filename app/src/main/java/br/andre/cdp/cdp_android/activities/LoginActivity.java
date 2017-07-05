@@ -8,8 +8,8 @@ import android.widget.Toast;
 
 import br.andre.cdp.cdp_android.BuildConfig;
 import br.andre.cdp.cdp_android.R;
-import br.andre.cdp.cdp_android.login.ILoginView;
-import br.andre.cdp.cdp_android.login.LoginPresenter;
+import br.andre.cdp.cdp_android.mvp.login.ILoginView;
+import br.andre.cdp.cdp_android.mvp.login.LoginPresenter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;

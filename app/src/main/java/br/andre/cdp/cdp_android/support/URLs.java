@@ -7,7 +7,7 @@ package br.andre.cdp.cdp_android.support;
 public class URLs {
 
     public static final String HOST = "http://";
-    public static final String DOMAIN = "10.0.2.2:59520/";
+    public static final String DOMAIN = "10.0.2.2:5000/";
 
     public static final String LOGIN = HOST + DOMAIN + "api/token";
 

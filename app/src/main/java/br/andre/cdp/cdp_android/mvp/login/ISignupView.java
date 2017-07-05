@@ -1,4 +1,4 @@
-package br.andre.cdp.cdp_android.login;
+package br.andre.cdp.cdp_android.mvp.login;
 
 import org.json.JSONException;
 
