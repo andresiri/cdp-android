@@ -42,7 +42,7 @@ public class CreatePeladaAcitivity extends AppCompatActivity implements ICreateP
     public void OnClickSave() {
 
         Pelada pelada = new Pelada();
-        pelada.name = newpelada_etName.getText().toString();
+        pelada.setName(newpelada_etName.getText().toString());
 
         try {
             presenter.createPelada(pelada);

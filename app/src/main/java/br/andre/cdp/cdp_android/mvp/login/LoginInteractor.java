@@ -85,7 +85,7 @@ public class LoginInteractor implements ILoginInteractor {
 
         StringEntity entity = new StringEntity(json.toString());
 
-        client.post(context, URLs.USER_CREATE, entity, "application/json", new AsyncHttpResponseHandler() {
+        client.post(context, URLs.USER, entity, "application/json", new AsyncHttpResponseHandler() {
 
             public void onStart() {
                 super.onStart();

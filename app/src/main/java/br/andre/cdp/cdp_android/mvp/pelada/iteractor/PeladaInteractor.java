@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import br.andre.cdp.cdp_android.R;
 import br.andre.cdp.cdp_android.domain.Pelada;
@@ -38,10 +39,10 @@ public class PeladaInteractor implements IPeladaInteractor {
 
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("name", pelada.name);
+        jsonObject.put("name", pelada.getName());
         StringEntity entity = new StringEntity(jsonObject.toString());
 
-        client.post(context, URLs.PELADA_CREATE, entity, "application/json",
+        client.post(context, URLs.PELADAS, entity, "application/json",
             new AsyncHttpResponseHandler() {
 
                 public void onStart() { super.onStart(); }
@@ -72,5 +73,17 @@ public class PeladaInteractor implements IPeladaInteractor {
                 }
             }
         );
+    }
+
+
+    @Override
+    public void getPeladas(Context context, ICreatePeladaView view) {
+
+        PeladaService peladaService = new PeladaService();
+
+        List<Pelada> peladaList = peladaService.getPeladas(0);
+
+
+
     }
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import org.json.JSONException;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import br.andre.cdp.cdp_android.domain.Pelada;
 import br.andre.cdp.cdp_android.mvp.pelada.createpelada.ICreatePeladaView;
@@ -16,4 +17,5 @@ import br.andre.cdp.cdp_android.mvp.pelada.createpelada.ICreatePeladaView;
 interface IPeladaInteractor {
 
     void createPelada(Context context, ICreatePeladaView view, Pelada pelada) throws JSONException, UnsupportedEncodingException;
+    void getPeladas(Context context, ICreatePeladaView view);
 }
